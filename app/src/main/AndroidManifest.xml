@@ -13,6 +13,21 @@
         android:theme="@style/Theme.AddictionCravingDiaryCalendar"
         tools:targetApi="31">
         <activity
+            android:name=".AddSymptomActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add_symptom"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
+        <activity
+            android:name=".SymptomListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_symptom_list"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

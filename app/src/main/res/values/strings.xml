@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">addiction craving diary calendar</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_symptom_list">SymptomList</string>
+    <string name="title_activity_add_symptom">AddSymptomActivity</string>
+    <string name="title_activity_make_diary">MakeDiaryActivity</string>
 </resources>
