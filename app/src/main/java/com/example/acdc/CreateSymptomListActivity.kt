@@ -24,16 +24,21 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.acdc.model.Symptom
 import com.example.acdc.model.SymptomsList
 
-class AddSymptomActivity : ComponentActivity() {
+class CreateSymptomListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             val symptomsList = SymptomsList(MutableList<Symptom>(1,{Symptom("x",-1)}))
-                addSymptom(symptomsList)
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                AddSymptom(symptomsList)
                 SaveButton(symptomsList)
                 BackButton()
-
+            }
         }
     }
 }
@@ -41,14 +46,8 @@ class AddSymptomActivity : ComponentActivity() {
 
 
 @Composable
-fun addSymptom(symptomsList: SymptomsList):SymptomsList{
+fun AddSymptom(symptomsList: SymptomsList){
     var text by remember {mutableStateOf("")}
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ){
         OutlinedTextField(
             value = text, 
             onValueChange = {value -> text = value},
@@ -70,15 +69,13 @@ fun addSymptom(symptomsList: SymptomsList):SymptomsList{
             symptomsList.addSymptom(symptom)
 
 
-        Log.d("!!!! 2 dodanie ","${symptomsList.getSymptomList().last()}")
+            Log.d("!!!! 2 dodanie ","${symptomsList.getSymptomList().last()}")
             Log.d("!!!! 2","${symptomsList.getSymptomList().size}")
 
         }) {
             Text(text = "Dodaj objaw")
         }
 
-    }
-    return symptomsList
 }
 
 @Composable

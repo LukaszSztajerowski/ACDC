@@ -18,25 +18,31 @@
             android:label="@string/title_activity_make_diary"
             android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
         <activity
-            android:name=".AddSymptomActivity"
+            android:name=".CreateSymptomListActivity"
             android:exported="false"
-            android:label="@string/title_activity_add_symptom"
+            android:label="CreateSymptomListActivity"
             android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
         <activity
             android:name=".SymptomListActivity"
             android:exported="false"
-            android:label="@string/title_activity_symptom_list"
+            android:label="SymptomListActivity"
             android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
         <activity
             android:name=".EditSymptomsActivity"
             android:exported="false"
-            android:label="@string/title_activity_home"
+            android:label="EditSymptomsActivity"
             android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar"/>
+            <activity
+            android:name=".HomeActivity"
+            android:exported="true"
+            android:label="HomeActivity"
             android:theme="@style/Theme.AddictionCravingDiaryCalendar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

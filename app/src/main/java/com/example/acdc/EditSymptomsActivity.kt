@@ -19,8 +19,11 @@ class EditSymptomsActivity : ComponentActivity() {
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center){
+                verticalArrangement = Arrangement.Center)
+            {
                 Text(text = "edycja symptomów")
-            }        }
+                BackButton()
+            }
+        }
     }
 }
