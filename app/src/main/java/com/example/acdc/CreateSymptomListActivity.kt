@@ -29,18 +29,10 @@ class AddSymptomActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Log.d("!!!!!!!!","sprawdzenie kiedy mnie wywala ")
-
-            val context: Context = LocalContext.current
-            val symptomsList = intent.getSerializableExtra("symptomsList") as SymptomsList?
-            Log.d("!!!!!!!!","sprawdzenie kiedy mnie wywala 2 + ${symptomsList.toString()} ")
-
-            if (symptomsList != null) {
-                AddSymptom(symptomsList)
-            }
-            val intent = Intent(context, SymptomListActivity::class.java)
-            intent.putExtra("symptomsList", symptomsList)
-
+            val symptomsList = SymptomsList(MutableList<Symptom>(1,{Symptom("x",-1)}))
+                addSymptom(symptomsList)
+                SaveButton(symptomsList)
+                BackButton()
 
         }
     }
@@ -49,7 +41,7 @@ class AddSymptomActivity : ComponentActivity() {
 
 
 @Composable
-fun AddSymptom(symptomsList: SymptomsList){
+fun addSymptom(symptomsList: SymptomsList):SymptomsList{
     var text by remember {mutableStateOf("")}
 
     Column(
@@ -69,23 +61,35 @@ fun AddSymptom(symptomsList: SymptomsList){
                 name = text,
                 value = 0)
         Log.d("!!!! 1 Utworzenie Symptomu", "został utworzony symptom: $text")
+
+
             //dodaje do pobranej listy symptom
             if (symptomsList.getSymptomList().get(0).value == -1){
                 symptomsList.updateSymptom(symptomsList.getSymptomList().get(0),symptom)
             }else
             symptomsList.addSymptom(symptom)
-        Log.d("!!!! 2 dodanie ","dodawanie symptomu do list")
-            // przekazuje liste do symptomsListActivity
-        Log.d("!!!! 3 dodanie ","${symptomsList.getSymptomList().last()}")
-            Log.d("!!!! 3  ","${symptomsList.getSymptomList().size}")
+
+
+        Log.d("!!!! 2 dodanie ","${symptomsList.getSymptomList().last()}")
+            Log.d("!!!! 2","${symptomsList.getSymptomList().size}")
 
         }) {
-            Text(text = "Zapisz objaw")
+            Text(text = "Dodaj objaw")
         }
 
+    }
+    return symptomsList
+}
 
+@Composable
+fun SaveButton(symptomsList: SymptomsList){
+    val context: Context = LocalContext.current
+    val intentMainActivity: Intent = Intent(context, MainActivity::class.java)
 
-
-
+    Button(onClick = {
+        intentMainActivity.putExtra("symptomsList",symptomsList)
+        context.startActivity(intentMainActivity)
+    }) {
+        Text(text = "zapisz Listę objawów")
     }
 }
