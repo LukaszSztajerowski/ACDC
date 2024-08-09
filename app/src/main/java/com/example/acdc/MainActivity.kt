@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import com.example.acdc.model.Symptom
 import com.example.acdc.model.SymptomsList
 import com.example.acdc.ui.theme.AddictionCravingDiaryCalendarTheme
 
@@ -47,17 +48,32 @@ fun MyHomeActivityView(){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
-        Button(onClick = { context.startActivity(intentSymptomListActivity) }) {
+        Button(onClick = {
+            context.startActivity(intentSymptomListActivity)
+            Log.d("!!!!" ," lista objawow")
+        }) {
             Text(text = "lista objawów")
         }
-        Button(onClick = { context.startActivity(intentAddSymptomActivity) }) {
+        Button(onClick = {
+            context.startActivity(intentAddSymptomActivity)
+            Log.d("!!!!" ," dodaj objaw")
+        }) {
             Text(text = "dodaj objawy")
+
         }
-        Button(onClick = { context.startActivity(intentEditSymptomsActivity) }) {
+        Button(onClick = {
+            context.startActivity(intentEditSymptomsActivity)
+            Log.d("!!!!" ," edycja")
+        }) {
             Text(text = "edytuj objawy")
+
         }
-        Button(onClick = { context.startActivity(intentMakeDiaryActivity) }) {
+        Button(onClick = {
+            context.startActivity(intentMakeDiaryActivity)
+            Log.d("!!!!" ," wykoanaj")
+        }) {
             Text(text = "wykonaj dzienniczek")
+
         }
 
     }
@@ -67,10 +83,9 @@ fun MyHomeActivityView(){
 @Composable
 fun CreateSymptomList(){
     val context: Context = LocalContext.current
-    val symptomsList = SymptomsList()
+    val symptomsList = SymptomsList(MutableList<Symptom>(1,{Symptom("x",-1)}))
     val intent = Intent(context, AddSymptomActivity::class.java)
     intent.putExtra("symptomsList", symptomsList)
-    Log.d("!!!! Utworzenie listy objawów", "została utworzona lista symptomów ")
-//    context.startActivity(intent)
-
+    Log.d("!!!! Utworzenie symptomsList w  MainActivity ", "został utowrzony obiekt SymptomsList i przekazany dalej")
+    context.startActivity(intent)
 }

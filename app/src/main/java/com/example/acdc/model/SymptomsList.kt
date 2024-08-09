@@ -1,7 +1,9 @@
 package com.example.acdc.model
 
+import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
+@JsonClass(generateAdapter = true)
 data class SymptomsList(
     val symptoms: MutableList<Symptom> = mutableListOf()
 ) : Serializable
