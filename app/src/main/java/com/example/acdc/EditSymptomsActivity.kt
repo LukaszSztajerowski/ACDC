@@ -22,7 +22,7 @@ class EditSymptomsActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center)
             {
                 Text(text = "edycja symptomów")
-                BackButton()
+//                BackButton()
             }
         }
     }

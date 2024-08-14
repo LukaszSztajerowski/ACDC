@@ -13,42 +13,41 @@
         android:theme="@style/Theme.AddictionCravingDiaryCalendar"
         tools:targetApi="31">
         <activity
-            android:name=".MakeDiaryActivity"
-            android:exported="false"
-            android:label="@string/title_activity_make_diary"
-            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
-        <activity
-            android:name=".CreateSymptomListActivity"
-            android:exported="false"
-            android:label="CreateSymptomListActivity"
-            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
-        <activity
-            android:name=".SymptomListActivity"
-            android:exported="false"
-            android:label="SymptomListActivity"
-            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
-        <activity
-            android:name=".EditSymptomsActivity"
-            android:exported="false"
-            android:label="EditSymptomsActivity"
-            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AddictionCravingDiaryCalendar"/>
-            <activity
             android:name=".HomeActivity"
             android:exported="true"
-            android:label="HomeActivity"
+            android:label="@string/title_activity_home"
             android:theme="@style/Theme.AddictionCravingDiaryCalendar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MakeDiaryActivity"
+            android:exported="true"
+            android:label="@string/title_activity_make_diary"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
+        <activity
+            android:name=".CreateSymptomListActivity"
+            android:exported="true"
+            android:label="CreateSymptomListActivity"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
+        <activity
+            android:name=".SymptomListActivity"
+            android:exported="true"
+            android:label="SymptomListActivity"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
+        <activity
+            android:name=".EditSymptomsActivity"
+            android:exported="true"
+            android:label="EditSymptomsActivity"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="MainActivity"
+            android:theme="@style/Theme.AddictionCravingDiaryCalendar" />
     </application>
 
 </manifest>

@@ -22,8 +22,9 @@ class HomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyHomeActivityView()
+
             Log.d("!! home activity", "home activity")
+            MyHomeActivityView()
 
         }
     }
@@ -76,9 +77,3 @@ fun MyHomeActivityView(){
 
 }
 
-@Composable
-fun BackButton() {
-    val context: Context = LocalContext.current
-    val intent = Intent(context, MainActivity::class.java)
-    context.startActivity(intent)
-}

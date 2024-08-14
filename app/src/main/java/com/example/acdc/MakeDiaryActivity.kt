@@ -22,7 +22,7 @@ class MakeDiaryActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center)
             {
                 Text(text = "dzienniczek glodu")
-                BackButton()
+//                BackButton()
             }
         }
     }

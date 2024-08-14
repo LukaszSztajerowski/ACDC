@@ -37,7 +37,7 @@ class CreateSymptomListActivity : ComponentActivity() {
             ) {
                 AddSymptom(symptomsList)
                 SaveButton(symptomsList)
-                BackButton()
+//                BackButton()
             }
         }
     }
@@ -59,7 +59,7 @@ fun AddSymptom(symptomsList: SymptomsList){
             val symptom = Symptom(
                 name = text,
                 value = 0)
-        Log.d("!!!! 1 Utworzenie Symptomu", "został utworzony symptom: $text")
+        Log.d("!! 1 Utworzenie Symptomu", "został utworzony symptom: $text")
 
 
             //dodaje do pobranej listy symptom
@@ -69,8 +69,8 @@ fun AddSymptom(symptomsList: SymptomsList){
             symptomsList.addSymptom(symptom)
 
 
-            Log.d("!!!! 2 dodanie ","${symptomsList.getSymptomList().last()}")
-            Log.d("!!!! 2","${symptomsList.getSymptomList().size}")
+            Log.d("!! 2 dodanie ","${symptomsList.getSymptomList().last()}")
+            Log.d("!! 2","${symptomsList.getSymptomList().size}")
 
         }) {
             Text(text = "Dodaj objaw")

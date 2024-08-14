@@ -23,7 +23,7 @@ class SymptomListActivity : ComponentActivity() {
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(text = "Lista objawow")
-                BackButton()
+//                BackButton()
             }
         }
     }
