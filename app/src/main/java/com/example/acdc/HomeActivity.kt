@@ -16,14 +16,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import com.example.acdc.model.SymptomsList
 
+var symptomsList = mutableListOf<SymptomsList>()
 class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        symptomsList = StorageOperations.readSymptomList(this). toMutableList()
+
         enableEdgeToEdge()
         setContent {
 
             Log.d("!! home activity", "home activity")
+
             MyHomeActivityView()
 
         }

@@ -37,7 +37,6 @@ class CreateSymptomListActivity : ComponentActivity() {
             ) {
                 AddSymptom(symptomsList)
                 SaveButton(symptomsList)
-//                BackButton()
             }
         }
     }
@@ -63,7 +62,7 @@ fun AddSymptom(symptomsList: SymptomsList){
 
 
             //dodaje do pobranej listy symptom
-            if (symptomsList.getSymptomList().get(0).value == -1){
+            if (symptomsList.getSymptomList().get(0).value.equals(-1) ){
                 symptomsList.updateSymptom(symptomsList.getSymptomList().get(0),symptom)
             }else
             symptomsList.addSymptom(symptom)
