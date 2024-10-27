@@ -30,6 +30,7 @@ class SymptomListActivity : ComponentActivity() {
             val context: Context = LocalContext.current
             val list = getList(context).get(0)
             showList(symptomsList = list)
+            BackButton()
         }
     }
 }

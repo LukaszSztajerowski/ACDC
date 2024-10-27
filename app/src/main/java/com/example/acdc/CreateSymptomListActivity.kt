@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
@@ -42,6 +43,8 @@ class CreateSymptomListActivity : ComponentActivity() {
                 ) {
                     AddSymptom(symptomsList)
                     SaveButton(symptomsList)
+                    BackButton()
+
                 }
 
         }
@@ -139,3 +142,4 @@ fun getList(context: Context): List<SymptomsList> {
         emptyList() // Zwraca pustą listę, jeśli nie ma zapisanych danych
     }
 }
+
