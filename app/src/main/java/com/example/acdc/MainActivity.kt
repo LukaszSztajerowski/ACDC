@@ -15,7 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import com.example.acdc.model.SymptomsList
 import com.example.acdc.ui.theme.AddictionCravingDiaryCalendarTheme
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,5 +50,33 @@ fun BackButton() {
         }) {
             Text(text = "powrót")
         }
+    }
+}
+
+
+fun saveList(context: Context, list: List<SymptomsList>) {
+    val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+
+    // Konwersja listy na JSON
+    val gson = Gson()
+    val json = gson.toJson(list)
+
+    editor.putString("SymptomsList", json)
+    editor.apply()
+}
+
+fun getList(context: Context): List<SymptomsList> {
+    val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+    val gson = Gson()
+    val json = sharedPreferences.getString("SymptomsList", null)
+
+    // Typ listy, aby Gson wiedział co konwertować
+    val type = object : TypeToken<List<SymptomsList>>() {}.type
+
+    return if (json != null) {
+        gson.fromJson(json, type)
+    } else {
+        emptyList() // Zwraca pustą listę, jeśli nie ma zapisanych danych
     }
 }

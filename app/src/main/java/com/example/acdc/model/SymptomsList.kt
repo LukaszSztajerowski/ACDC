@@ -2,10 +2,12 @@ package com.example.acdc.model
 
 import com.squareup.moshi.JsonClass
 import java.io.Serializable
+import java.util.Date
 
 @JsonClass(generateAdapter = true)
 data class SymptomsList(
-    val symptoms: MutableList<Symptom> = mutableListOf()
+    val symptoms: MutableList<Symptom> = mutableListOf(),
+    val date: Date
 ) : Serializable
 {
 

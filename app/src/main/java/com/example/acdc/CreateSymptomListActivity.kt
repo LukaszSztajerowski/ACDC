@@ -8,9 +8,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -22,10 +23,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import com.example.acdc.model.Symptom
 import com.example.acdc.model.SymptomsList
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import java.util.Date
 
 
 class CreateSymptomListActivity : ComponentActivity() {
@@ -35,12 +36,18 @@ class CreateSymptomListActivity : ComponentActivity() {
         setContent {
             val context: Context = LocalContext.current
 
-                val symptomsList = SymptomsList(MutableList<Symptom>(1,{Symptom("x",-1)}))
+                val symptomsList = SymptomsList(MutableList<Symptom>(1,{Symptom("x",-1)}), Date())
+                Log.d("dodanie czasu","${symptomsList.date}")
                 Column(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(start = 8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
+                    Spacer(modifier = Modifier.padding(20.dp))
+                    Text(text = "Aby stworzyć dzienniczek napięcia zastanów sie przez chwile i zapisz po 5 objawów z każdej kategorii tak, żeby ich łączna suma wynosiła 20 pozycji:")
+                    Text(text = "MYŚLI, UCZUCIA, ZACHOWANIA, REAKCJE ORGANIZMU")
                     AddSymptom(symptomsList)
                     SaveButton(symptomsList)
                     BackButton()
@@ -82,17 +89,13 @@ fun AddSymptom(symptomsList: SymptomsList){
 
 
             //dodaje do pobranej listy symptom
-            if (symptomsList.getSymptomList().get(0).value.equals(-1) ){
+            if (symptomsList.getSymptomList()[0].value == -1){
                 if(symptom.name != ""){
                 symptomsList.updateSymptom(symptomsList.getSymptomList().get(0),symptom)}
             }else
                 if(symptom.name != ""){
                     symptomsList.addSymptom(symptom)
 }
-
-            Log.d("!! 2 dodanie ","${symptomsList.getSymptomList().last()}")
-            Log.d("!! 2","${symptomsList.getSymptomList().size}")
-
             // wyczyszczenie wartosci text fielda
             text = ""
         }) {
@@ -113,33 +116,6 @@ fun SaveButton(symptomsList: SymptomsList){
 
         saveList(context, listOf( symptomsList))    }) {
         Text(text = "zapisz Listę objawów")
-    }
-}
-
-fun saveList(context: Context, list: List<SymptomsList>) {
-    val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-
-    // Konwersja listy na JSON
-    val gson = Gson()
-    val json = gson.toJson(list)
-
-    editor.putString("SymptomsList", json)
-    editor.apply()
-}
-
-fun getList(context: Context): List<SymptomsList> {
-    val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-    val gson = Gson()
-    val json = sharedPreferences.getString("SymptomsList", null)
-
-    // Typ listy, aby Gson wiedział co konwertować
-    val type = object : TypeToken<List<SymptomsList>>() {}.type
-
-    return if (json != null) {
-        gson.fromJson(json, type)
-    } else {
-        emptyList() // Zwraca pustą listę, jeśli nie ma zapisanych danych
     }
 }
 
