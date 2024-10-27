@@ -33,14 +33,16 @@ class CreateSymptomListActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val context: Context = LocalContext.current
-            if(getList(context)==null){
+
                 val symptomsList = SymptomsList(MutableList<Symptom>(1,{Symptom("x",-1)}))
-                CreateSymptomView(symptomsList)
-            }
-            else{
-                val symptomsList = getList(context).get(0)
-                CreateSymptomView(symptomsList)
-            }
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    AddSymptom(symptomsList)
+                    SaveButton(symptomsList)
+                }
 
         }
     }
