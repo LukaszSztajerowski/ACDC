@@ -60,18 +60,6 @@ class CreateSymptomListActivity : ComponentActivity() {
 
 
 @Composable
-fun CreateSymptomView(symptomsList: SymptomsList){
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        AddSymptom(symptomsList)
-        SaveButton(symptomsList)
-    }
-}
-
-@Composable
 fun AddSymptom(symptomsList: SymptomsList){
     var text by remember {mutableStateOf("")}
         OutlinedTextField(
@@ -111,9 +99,6 @@ fun SaveButton(symptomsList: SymptomsList){
 
 
     Button(onClick = {
-//        intentMainActivity.putExtra("symptomsList",symptomsList)
-//        context.startActivity(intentMainActivity)
-
         saveList(context, listOf( symptomsList))    }) {
         Text(text = "zapisz Listę objawów")
     }
